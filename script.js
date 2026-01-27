@@ -1,50 +1,102 @@
-const gallery = document.getElementById("gallery-view");
-/* const toggleMode = document.getElementById("toggle"); */
-/* const modeBtn = document.getElementById("mode-btn"); */
-const modeSwitch = document.getElementById("mode-switch");
 const body = document.body;
+const filterItems = document.querySelectorAll("#side-bar button");
+const gallery = document.getElementById("gallery-view");
+/* toggle controller */
+const modeSwitch = document.getElementById("mode-switch"); 
 
 const productDetail = [
     { lightImage: "images/product1-light.png",
         darkImage: "images/product1-dark.png",
-        name: "Product A",
-        price: "Starting from RM200"
+        name: "Addizern Ceramic Mount Lamp",
+        price: "From RM800.00",
+        category: "ceiling"
     },
-/*     { image: "images/item2.png",
-        name: "Product B",
-        price: "Starting from RM200"
-    },
-    { image: "images/item3.png",
-        name: "Product C",
-        price: "Starting from RM200"
-    },
-    { image: "images/item4.png",
-        name: "Product D",
-        price: "Starting from RM200"
-    }, */
     { lightImage: "images/product2-light.png",
         darkImage: "images/product2-dark.png",
-        name: "Product E",
-        price: "Starting from RM200"
+        name: "Kwazoin Lamp",
+        price: "From RM500.00",
+        category: "wall"
+        
+    },
+    { lightImage: "images/product3-light.png",
+        darkImage: "images/product3-dark.png",
+        name: "Alimeiron Lamp",
+        price: "From RM1,200.00",
+        category: "table"
+    },
+    { lightImage: "images/product4-light.png",
+        darkImage: "images/product4-dark.png",
+        name: "Berillain Lamp",
+        price: "From RM200.00",
+        category: "ceiling"
     }
 ];
 
-// Toggle dark mode when switch changes
-modeSwitch.addEventListener("change", () => {
-    body.classList.toggle("dark-mode");
-    renderGallery(); // update product images
+
+let currentFilter = "all";
+
+filterItems.forEach(item => {
+    item.addEventListener("click", () => {
+        currentFilter = item.dataset.filter;  // save selection
+        
+        if (currentFilter === "all") {
+            renderGallery();  // show everything
+        } else {
+            renderGallery(currentFilter); // show selected category
+        }
+    });
 });
 
 
-function renderGallery() {
+
+/* toggle.addEventListener("change", () => {
+  if (toggle.checked) {
+        image.src = darkImage;
+  } else {
+        image.src = lightImage;
+  }
+}); */
+
+
+// user clicks switch 
+// checkbox changes state (checked/unchecked)
+modeSwitch.addEventListener("change", () => {  // "change" event fires
+    body.classList.toggle("dark-mode"); // if body has dark-mode class, remove. if no dark-mode class, added.
+
+    if (currentFilter === "all") {
+        renderGallery();
+    } else {
+        renderGallery(currentFilter);
+    }
+});
+
+
+function renderGallery(filter = null) {
     gallery.innerHTML = ""; //clear previous cards
 
     productDetail.forEach(product => {
-        const card = document.createElement('div');
-        card.classList.add('card');
+        
+        // skip if filter doesn't match
+        if (filter && product.category !== filter) return;
+        
+        // loop through data
+        const card = document.createElement('div');  // make an empty box
+        card.classList.add('card');  // give it a style name called card
 
-        // Decide which image to show based on body class
-        const isDark = body.classList.contains("dark-mode");
+        // decide which image to show based on body class
+        /* connects toggle to image 
+            does <body> have class "dark-mode" ? */
+        const isDark = body.classList.contains("dark-mode"); 
+
+        // shortcut if/else
+        /* 
+        let imgSrc;
+        if (isDark) {
+            imgSrc = product.darkImage;
+        } else {
+            imgSrc = product.lightImage;
+        }
+        */
         const imgSrc = isDark ? product.darkImage : product.lightImage;
 
         card.innerHTML = `
@@ -53,15 +105,10 @@ function renderGallery() {
             <p>${product.price}</p>
         `;
 
+        // take the finished product card and place it inside the gallery.
         gallery.appendChild(card);
     });
 }
 
-// Initial render
+// initial render
 renderGallery();
-
-/* // Toggle dark mode
-modeBtn.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");  // add/remove dark mode
-    renderGallery(); // re-render gallery images
-}); */

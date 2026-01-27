@@ -5,7 +5,7 @@
 }
 
 
-/* Hide checkbox */
+/* hide checkbox but it's still there working in the background*/
 #mode-switch {
   display: none;
 }
@@ -16,19 +16,32 @@
   display: inline-block;
   width: 50px;
   height: 28px;
-  background-color: #ccc;
+  background-color: #f2e7e7;
   border-radius: 28px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .toggle {
-    text-align: right;
-    margin-bottom: 1rem;
-    padding: 16px;
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    gap: 12px;
+    margin-bottom: 40px;
 } 
 
-/* The circle inside the switch */
+.toggle-text {
+    font-size: 14px;
+}
+
+.logo {
+    margin-right: auto;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: "Roboto Mono", sans-serif;
+}
+
+/* creates the circle inside the switch */
 .switch::before {
   content: "";
   position: absolute;
@@ -36,14 +49,14 @@
   height: 22px;
   left: 3px;
   top: 3px;
-  background-color: white;
+  background-color: #330000;
   border-radius: 50%;
   transition: transform 0.3s;
 }
 
-/* When checked → move circle and change background */
+/* when the checkbox is checked → move circle switch next to it and change background */
 #mode-switch:checked + .switch {
-  background-color: #4caf50; /* green like Apple switch */
+  background-color: #f3eed9; 
 }
 
 #mode-switch:checked + .switch::before {
@@ -55,27 +68,26 @@
 body {
     margin: 20px;
     background-color: white;
-    color: black;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    color: #803b32;
+    transition: background-color 1s ease, color 1s ease;
     font-family: Google Sans, sans-serif;
 }
 
 body.dark-mode {
-    background-color: #e3d6ba;  /* dark background */
-    color: black;
+    background-color: #d5cecd;  /* dark background */
+    color: #3d1712;
 }
 
 
 /* All lighting */
-#header {
-    width: 100%;
+.header {
+    width: 100%;    
+    border-bottom: 1px solid #803b32;
+    color: #803b32;
+    padding: 10px 0;
 }
 
-#header h1 {
-    font-size: 1.5rem;
-    padding: 16px;
-    border-bottom: 1px solid rgb(107, 83, 47);
-}
+
 
  
 .row-container {
@@ -85,50 +97,74 @@ body.dark-mode {
 
 .column {
     flex: 1;
-    padding: 16px;
-    align-items: flex-start;
+    padding: 16px 0;
 }
 
-.column p{
-    margin-bottom: 5px;
-}
 
-.column h1{
-    font-size: 1rem;
+#side-bar button {
+    display: block;
+    background: none;      /* remove gray background */
+    border: none;          /* remove border */
+    padding: 0;            /* remove button spacing */
+    margin: 10px 0;        /* vertical spacing */
+    color: #803b32;
+    font-size: 13px;
+    cursor: pointer;       /* show it's clickable */
+    text-align: left;
 }
 
 #side-bar {
     width: 100%;
-    max-width: 200px;
-    /* background-color: #f0f0f0 */;
+    max-width: 300px;
 }
 
 #gallery-view {
+    margin: 20px 0;
     display: flex;
     flex-wrap: wrap; /* allow multiple rows */
-    gap: 16px; /* spacing between cards */
-    justify-content: flex-start; /* align items to left; change to space-between if you want even spacing */
+    gap: 10px; /* spacing between cards */
+    justify-content: left /* align items to left; change to space-between if you want even spacing */
 }
 
 
 /* card */
 .card {
-    flex: 1 1 200px;  /* grow, shrink, base width */
-    max-width: 250px;   
+    flex: 0 0 calc(25% - 10px); /* 4 cards per row */
 } 
 
-.card img {
-    height: 300px;
-    width: 100%;
-    display: block;
-    object-fit: fill;
-    margin-bottom: 10px;
-    transition: opacity 0.5s ease; /* fade effect */
+@media (max-width: 900px) {
+    .card { flex: 0 0 calc(50% - 10px); }
 }
 
-.card p, h1 {
+@media (max-width: 500px) {
+    .card { flex: 0 0 100%; }
+}
+
+.card img {
+    height: 360px;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    transition: opacity 1s ease, filter 1s ease;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+#gallery-view p, #gallery-view h1 {
     margin-bottom: 5px;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 400;
-    border-bottom: black;
+    color: #803b32;
 }

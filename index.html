@@ -3,33 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Light & Dark Mode</title>
+    <title>Lighting Shop</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Jersey+25&family=Londrina+Shadow&family=Road+Rage&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- <div class="toggle" id="mode">
-        <button id="mode-btn">Dark</button>
-    </div> -->
     <div class="toggle">
+        <span class="logo">Light Shop</span>
+        <span class="toggle-text">Turn on the light?</span>
+        <!-- checkbox because toggle is not just a design. it needs a state. -->
         <input type="checkbox" id="mode-switch">
-        <label for="mode-switch" class="switch"></label>
+        <label for="mode-switch" class="switch"></label> 
+        <!-- connects the label to the checkbox with id mode-switch -->
+        <!-- clicking the label = clicking the checkbox -->
+        <!-- label with class switch creates the toggle shape -->
     </div>
-    <div id="header">
-        <h1>All Lighting</h1>
-    </div>
+
     <section class="row-container">
         <div class="column" id="side-bar">
-            <p>All lighting</p>
-            <p>New Arrivals</p>
-            <p>Finish Samples</p>
+            <div class="header">
+                <p id="filter">+ Filter</p>
+            </div>
+            <button data-filter="all">All products</button>
+            <button data-filter="wall">Wall lamps</button>
+            <button data-filter="table">Table lamps</button>  
+            <button data-filter="ceiling">Ceiling lights</button>
         </div>
-        <div class="column" id="gallery-view">
-            <!-- JS will inject cards here -->
+        <div class="column">
+            <div class="header">
+                <p id="headline">Lightings</p>
+            </div>
+            <div id="gallery-view">
+                <!-- JS will inject cards here -->
+            </div>
         </div>
     </section>
 
     <script src="script.js"></script>
-
-    
 </body>
 </html>
