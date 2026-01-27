@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Hide checkbox */
+#mode-switch {
+  display: none;
+}
+
+/* Switch container */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  background-color: #ccc;
+  border-radius: 28px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle {
+    text-align: right;
+    margin-bottom: 1rem;
+    padding: 16px;
+} 
+
+/* The circle inside the switch */
+.switch::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 3px;
+  top: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+/* When checked → move circle and change background */
+#mode-switch:checked + .switch {
+  background-color: #4caf50; /* green like Apple switch */
+}
+
+#mode-switch:checked + .switch::before {
+  transform: translateX(22px);
+}
+
+
+/* Body fade transition */
+body {
+    margin: 20px;
+    background-color: white;
+    color: black;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    font-family: Google Sans, sans-serif;
+}
+
+body.dark-mode {
+    background-color: #e3d6ba;  /* dark background */
+    color: black;
+}
+
+
+/* All lighting */
+#header {
+    width: 100%;
+}
+
+#header h1 {
+    font-size: 1.5rem;
+    padding: 16px;
+    border-bottom: 1px solid rgb(107, 83, 47);
+}
+
+ 
+.row-container {
+    display: flex;
+    gap: 16px;      /* space between sidebar and gallery */
+}
+
+.column {
+    flex: 1;
+    padding: 16px;
+    align-items: flex-start;
+}
+
+.column p{
+    margin-bottom: 5px;
+}
+
+.column h1{
+    font-size: 1rem;
+}
+
+#side-bar {
+    width: 100%;
+    max-width: 200px;
+    /* background-color: #f0f0f0 */;
+}
+
+#gallery-view {
+    display: flex;
+    flex-wrap: wrap; /* allow multiple rows */
+    gap: 16px; /* spacing between cards */
+    justify-content: flex-start; /* align items to left; change to space-between if you want even spacing */
+}
+
+
+/* card */
+.card {
+    flex: 1 1 200px;  /* grow, shrink, base width */
+    max-width: 250px;   
+} 
+
+.card img {
+    height: 300px;
+    width: 100%;
+    display: block;
+    object-fit: fill;
+    margin-bottom: 10px;
+    transition: opacity 0.5s ease; /* fade effect */
+}
+
+.card p, h1 {
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 400;
+    border-bottom: black;
+}
