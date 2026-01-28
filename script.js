@@ -101,8 +101,8 @@ function renderGallery(filter = null) {
 
         card.innerHTML = `
             <img src="${imgSrc}" alt="${product.name}">
-            <h1 class="product-name">${product.name}</h1>
-            <p>${product.price}</p>
+            <h3 class="product-name">${product.name}</h3>
+            <p class="product-price">${product.price}</p>
         `;
 
         // take the finished product card and place it inside the gallery.
