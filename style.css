@@ -1,26 +1,52 @@
+/* RESET BASE */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-/* hide checkbox but it's still there working in the background*/
-#mode-switch {
-  display: none;
+body {
+    margin: 20px;
+    background-color: white;
+    color: #803b32;
+    transition: background-color 1s ease, color 1s ease;
+    font-family: Google Sans, sans-serif;
 }
 
-/* Switch container */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 28px;
-  background-color: #f2e7e7;
-  border-radius: 28px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+body.dark-mode {
+    background-color: #d5cecd;  /* dark background */
+    color: #3d1712;
 }
+
+
+/* LAYOUT */
+
+.row-container {
+    display: flex;
+    gap: 16px;      /* space between sidebar and gallery */
+}
+
+.column {
+    flex: 1;
+    padding: 16px 0;
+}
+
+#side-bar {
+    width: 100%;
+    max-width: 250px;
+}
+
+#gallery-view {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap; /* allow multiple rows */
+    gap: 10px; /* spacing between cards */
+    justify-content: left /* align items to left; change to space-between if you want even spacing */
+}
+
+
+/* HEADER / TOP BAR */
 
 .toggle {
     display: flex;
@@ -39,6 +65,26 @@
     font-weight: bold;
     font-size: 1.5rem;
     font-family: "Roboto Mono", sans-serif;
+}
+
+
+/* SWITCH COMPONENT */
+
+/* hide checkbox but it's still there working in the background*/
+#mode-switch {
+  display: none;
+}
+
+/* switch container */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  background-color: #f2e7e7;
+  border-radius: 28px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 /* creates the circle inside the switch */
@@ -64,20 +110,7 @@
 }
 
 
-/* Body fade transition */
-body {
-    margin: 20px;
-    background-color: white;
-    color: #803b32;
-    transition: background-color 1s ease, color 1s ease;
-    font-family: Google Sans, sans-serif;
-}
-
-body.dark-mode {
-    background-color: #d5cecd;  /* dark background */
-    color: #3d1712;
-}
-
+/* SIDEBAR */
 
 /* All lighting */
 .header {
@@ -86,20 +119,6 @@ body.dark-mode {
     color: #803b32;
     padding: 10px 0;
 }
-
-
-
- 
-.row-container {
-    display: flex;
-    gap: 16px;      /* space between sidebar and gallery */
-}
-
-.column {
-    flex: 1;
-    padding: 16px 0;
-}
-
 
 #side-bar button {
     display: block;
@@ -118,22 +137,15 @@ body.dark-mode {
     max-width: 250px;
 }
 
-#gallery-view {
-    margin: 20px 0;
-    display: flex;
-    flex-wrap: wrap; /* allow multiple rows */
-    gap: 10px; /* spacing between cards */
-    justify-content: left /* align items to left; change to space-between if you want even spacing */
-}
 
+/* PRODUCT CARD COMPONENT */
 
-/* card */
 .card {
-    flex: 0 0 calc(25% - 10px); /* 4 cards per row */
+    flex: 0 0 calc(25% - 12px); /* 4 cards per row */
 } 
 
 @media (max-width: 900px) {
-    .card { flex: 0 0 calc(50% - 10px); }
+    .card { flex: 0 0 calc(50% - 12px); }
 }
 
 @media (max-width: 500px) {
@@ -148,18 +160,6 @@ body.dark-mode {
     margin-bottom: 10px;
     opacity: 0;
     animation: fadeIn 1s ease forwards;
-    transition: opacity 1s ease, filter 1s ease;
-}
-
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
 }
 
 .product-name {
@@ -171,4 +171,13 @@ body.dark-mode {
 .product-price {
     font-size: 12px;
     opacity: 0.85;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
