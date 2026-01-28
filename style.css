@@ -162,9 +162,13 @@ body.dark-mode {
     }
 }
 
-#gallery-view p, #gallery-view h1 {
-    margin-bottom: 5px;
+.product-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.product-price {
     font-size: 12px;
-    font-weight: 400;
-    color: #803b32;
+    opacity: 0.85;
 }
