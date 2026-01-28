@@ -11,8 +11,8 @@
 </head>
 <body>
     <div class="toggle">
-        <span class="logo">Light Shop</span>
-        <span class="toggle-text">Turn on the light?</span>
+        <h1 class="logo">Light Shop</h1>
+        <label for="mode-switch" class="toggle-text">Turn on the light?</label>
         <!-- checkbox because toggle is not just a design. it needs a state. -->
         <input type="checkbox" id="mode-switch">
         <label for="mode-switch" class="switch"></label> 
@@ -21,8 +21,8 @@
         <!-- label with class switch creates the toggle shape -->
     </div>
 
-    <section class="row-container">
-        <div class="column" id="side-bar">
+    <main class="row-container">
+        <aside class="column" id="side-bar">
             <div class="header">
                 <p id="filter">+ Filter</p>
             </div>
@@ -30,16 +30,16 @@
             <button data-filter="wall">Wall lamps</button>
             <button data-filter="table">Table lamps</button>  
             <button data-filter="ceiling">Ceiling lights</button>
-        </div>
-        <div class="column">
+        </aside>
+        <section class="column">
             <div class="header">
                 <p id="headline">Lightings</p>
             </div>
             <div id="gallery-view">
                 <!-- JS will inject cards here -->
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>

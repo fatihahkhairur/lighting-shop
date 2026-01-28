@@ -64,7 +64,6 @@ body.dark-mode {
     margin-right: auto;
     font-weight: bold;
     font-size: 1.5rem;
-    font-family: "Roboto Mono", sans-serif;
 }
 
 
@@ -130,6 +129,10 @@ body.dark-mode {
     font-size: 13px;
     cursor: pointer;       /* show it's clickable */
     text-align: left;
+}
+
+#side-bar button:hover {
+    color: #b17c75;
 }
 
 #side-bar {
