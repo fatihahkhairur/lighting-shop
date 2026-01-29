@@ -1,10 +1,10 @@
-# 🛋️ Lighting Shop Catalogue
+## 🛋️ Lighting Shop Catalogue
 [Live Demo](https://fatihahkhairur.github.io/lighting-shop/)
 
-# Preview 
-<img width="998" height="733" alt="image" src="https://github.com/user-attachments/assets/e4e6d254-f600-4b21-bcd8-60982a3aeac1" />
+### Preview 
+<img width="990" height="732" alt="image" src="https://github.com/user-attachments/assets/d8e3a073-2168-41fd-bdf7-5d37d0ecd8e5" />
 
-## Description
+### Description
 This is a responsive lighting product catalogue landing page built using HTML, CSS, and JavaScript.
 
 The project simulates an e-commerce browsing experience where users can:
