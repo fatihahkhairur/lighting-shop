@@ -39,10 +39,10 @@ filterItems.forEach(item => {
     item.addEventListener("click", () => {
         currentFilter = item.dataset.filter;  // save selection
         
-        // ⭐ remove active from all
+        // remove active from all
         filterItems.forEach(btn => btn.classList.remove("active"));
 
-        // ⭐ add active to clicked
+        // add active to clicked
         item.classList.add("active");
 
         if (currentFilter === "all") {
@@ -54,16 +54,6 @@ filterItems.forEach(item => {
 });
 
 document.querySelector('[data-filter="all"]').classList.add("active");
-
-
-
-/* toggle.addEventListener("change", () => {
-  if (toggle.checked) {
-        image.src = darkImage;
-  } else {
-        image.src = lightImage;
-  }
-}); */
 
 
 // user clicks switch 
@@ -97,14 +87,6 @@ function renderGallery(filter = null) {
         const isDark = body.classList.contains("dark-mode"); 
 
         // shortcut if/else
-        /* 
-        let imgSrc;
-        if (isDark) {
-            imgSrc = product.darkImage;
-        } else {
-            imgSrc = product.lightImage;
-        }
-        */
         const imgSrc = isDark ? product.darkImage : product.lightImage;
 
         card.innerHTML = `
