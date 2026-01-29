@@ -39,6 +39,12 @@ filterItems.forEach(item => {
     item.addEventListener("click", () => {
         currentFilter = item.dataset.filter;  // save selection
         
+        // ⭐ remove active from all
+        filterItems.forEach(btn => btn.classList.remove("active"));
+
+        // ⭐ add active to clicked
+        item.classList.add("active");
+
         if (currentFilter === "all") {
             renderGallery();  // show everything
         } else {
@@ -46,6 +52,8 @@ filterItems.forEach(item => {
         }
     });
 });
+
+document.querySelector('[data-filter="all"]').classList.add("active");
 
 
 

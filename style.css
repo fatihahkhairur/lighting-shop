@@ -16,33 +16,6 @@ body {
 
 body.dark-mode {
     background-color: #d5cecd;  /* dark background */
-    color: #3d1712;
-}
-
-
-/* LAYOUT */
-
-.row-container {
-    display: flex;
-    gap: 16px;      /* space between sidebar and gallery */
-}
-
-.column {
-    flex: 1;
-    padding: 16px 0;
-}
-
-#side-bar {
-    width: 100%;
-    max-width: 250px;
-}
-
-#gallery-view {
-    margin: 20px 0;
-    display: flex;
-    flex-wrap: wrap; /* allow multiple rows */
-    gap: 10px; /* spacing between cards */
-    justify-content: left /* align items to left; change to space-between if you want even spacing */
 }
 
 
@@ -94,18 +67,33 @@ body.dark-mode {
   height: 22px;
   left: 3px;
   top: 3px;
-  background-color: #330000;
+  background-color: white;
   border-radius: 50%;
   transition: transform 0.3s;
 }
 
 /* when the checkbox is checked → move circle switch next to it and change background */
 #mode-switch:checked + .switch {
-  background-color: #f3eed9; 
+  background-color: #692929; 
 }
 
 #mode-switch:checked + .switch::before {
   transform: translateX(22px);
+}
+
+
+
+/* LAYOUT */
+
+.row-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 16px;      
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -120,49 +108,75 @@ body.dark-mode {
 }
 
 #side-bar button {
-    display: block;
-    background: none;      /* remove gray background */
-    border: none;          /* remove border */
-    padding: 0;            /* remove button spacing */
-    margin: 10px 0;        /* vertical spacing */
-    color: #803b32;
+    position: relative;
+    background: none;  
+    border: none; 
+    margin: 10px 0;  
+    color: #803b32;  
     font-size: 13px;
-    cursor: pointer;       /* show it's clickable */
+    cursor: pointer;   
     text-align: left;
+    padding-left: 0; 
+    transition: color 0.3s ease, padding 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    
+    
 }
 
 #side-bar button:hover {
     color: #b17c75;
 }
 
-#side-bar {
-    width: 100%;
-    max-width: 250px;
+/* hidden dash by default */
+#side-bar button::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* ACTIVE STATE */
+#side-bar button.active {
+    padding-left: 14px; /* make space for dash */
+}
+
+#side-bar button.active::before {
+    opacity: 1;
+}
+
+
+#gallery-view {
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px; 
 }
 
 
 /* PRODUCT CARD COMPONENT */
 
 .card {
-    flex: 0 0 calc(25% - 12px); /* 4 cards per row */
+    display: flex;
+    flex-direction: column;
 } 
 
 @media (max-width: 900px) {
-    .card { flex: 0 0 calc(50% - 12px); }
+    #gallery-view { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 500px) {
-    .card { flex: 0 0 100%; }
+    #gallery-view { grid-template-columns: 1fr; }
 }
 
 .card img {
-    height: 360px;
     width: 100%;
     display: block;
     object-fit: cover;
+    aspect-ratio: 2 / 3;
     margin-bottom: 10px;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
+    transition: 1s ease;
 }
 
 .product-name {
