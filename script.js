@@ -3,6 +3,19 @@ const filterItems = document.querySelectorAll("#side-bar button");
 const gallery = document.getElementById("gallery-view");
 /* toggle controller */
 const modeSwitch = document.getElementById("mode-switch"); 
+const filterToggle = document.querySelector(".filter-toggle");
+const sideBar = document.getElementById("side-bar");
+
+filterToggle.addEventListener("click", () => {
+  sideBar.classList.toggle("open");
+
+  if (sideBar.classList.contains("open")) {
+    filterToggle.textContent = "− Filter";
+  } else {
+    filterToggle.textContent = "+ Filter";
+  }
+});
+
 
 const productDetail = [
     { lightImage: "images/product1-light.png",
